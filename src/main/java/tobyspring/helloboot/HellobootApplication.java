@@ -30,11 +30,8 @@ public class HellobootApplication {
 
                         String result = helloController.hello(name);
 
-                        resp.setStatus(HttpStatus.OK.value());
-                        resp.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE);
+                        resp.setContentType(MediaType.TEXT_PLAIN_VALUE);
                         resp.getWriter().println(result);
-                    } else if (req.getRequestURI().equals("user")) {
-                        // user 관련 기능
                     } else {
                         resp.setStatus(HttpStatus.NOT_FOUND.value());
                     }
