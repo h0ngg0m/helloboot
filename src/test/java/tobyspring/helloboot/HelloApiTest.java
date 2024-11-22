@@ -13,7 +13,7 @@ public class HelloApiTest {
     void helloApi() {
         TestRestTemplate rest = new TestRestTemplate();
 
-        ResponseEntity<String> result = rest.getForEntity("http://localhost:8080/hello?name={name}", String.class, "Spring");
+        ResponseEntity<String> result = rest.getForEntity("http://localhost:8080/app/hello?name={name}", String.class, "Spring");
 
         Assertions.assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
         Assertions.assertThat(result.getHeaders().getFirst(HttpHeaders.CONTENT_TYPE)).contains("text/plain");
