@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Objects;
 
 @RestController
-@RequestMapping("/hello")
+@RequestMapping
 public class HelloController {
 
     private final HelloService helloService;
@@ -16,11 +16,16 @@ public class HelloController {
         this.helloService = helloService;
     }
 
-    @GetMapping
+    @GetMapping("/hello")
     public String hello(final String name) {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("name is required");
         }
         return helloService.sayHello(Objects.requireNonNull(name));
+    }
+
+    @GetMapping("/count")
+    public String count(String name) {
+        return name + ": " + helloService.countOf(name);
     }
 }

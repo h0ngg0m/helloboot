@@ -24,7 +24,7 @@ public class HelloServiceTest {
 
     @FastUnitTest
     void simpleHelloService() {
-        HelloService helloService = new SimpleHelloService();
+        HelloService helloService = new SimpleHelloService(helloRepository);
 
         String result = helloService.sayHello("Spring");
 
@@ -39,4 +39,16 @@ public class HelloServiceTest {
 
         Assertions.assertThat(result).isEqualTo("*Spring*");
     }
+
+    private static HelloRepository helloRepository = new HelloRepository() {
+        @Override
+        public Hello findHello(String name) {
+            return null;
+        }
+
+        @Override
+        public void increaseCount(String name) {
+        }
+
+    };
 }
